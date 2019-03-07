@@ -53,20 +53,20 @@ class MyGame(arcade.Window):
         self.player_list.append(self.player_sprite)
 
         # -- Set up the walls
-        radius = 4
-        for i in range((2 * radius)+1):
-            for j in range((2 * radius)+1):
-                dist = math.sqrt((i - radius) * (i - radius) + (j - radius) * (j - radius))
-                if radius - 0.5 < dist < radius + 0.5:
-                    wall = arcade.Sprite("images/Wall.png", 0.45)
-                    wall.center_x = i * 70
-                    wall.center_y = j * 70
+        rows = 8
+        columns = 6
+        for i in range(1, rows+1) :
+            for j in range(1, columns+1):
+                if (i == 1 or i == rows or j == 1 or j == columns):
+                    wall = arcade.Sprite("images/Wall.png", 0.5)
+                    wall.center_x = i * 90
+                    wall.center_y = j * 90
                     self.wall_list.append(wall)
 
         self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
 
         # Set the background color
-        arcade.set_background_color(arcade.color.WHITE)
+        arcade.set_background_color(arcade.color.PALE_RED_VIOLET)
 
     def on_draw(self):
         # This command has to happen before we start drawing

@@ -1,8 +1,9 @@
 
-Womb = []
+Womb = ['Adarsh','Gutsin', 'SirHype', 'PlayerXX', 'Alpha', 'Beta', 'EchoZF']
 
 def ActivePlayers():
     Active = []
+    Count = {}
     filename = "PlayersInfo"
     with open(filename) as f:
         for line in f:
@@ -12,19 +13,17 @@ def ActivePlayers():
                 line = line.rstrip("\n")
                 contents = line.split(",")
                 Active.append(contents[0])
-                Active = sorted(Active, key=str.lower)
     return Active
 
-def Filter(username):
-    index = 0
-    Active = ActivePlayers()
-    for names in Active:
-        if username == names:
-            index = Active.index(username)
-    Active.pop(index)
-    return Active
+def Filter(players, limit):
+    return players[:limit]
 
-print(Filter("adarshsi"))
+def Winner(players):
+    limit = Filter(players,1)
+    return limit
+
+print(Filter(Womb))
+
 
 
 
