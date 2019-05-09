@@ -80,6 +80,7 @@ object TCPSocketServer {
 
 
     actorSystem.scheduler.schedule(32.milliseconds, 32.milliseconds, server, SendGameState)
+    actorSystem.scheduler.schedule(16.milliseconds, 32.milliseconds, gameActor, UpdateGame)
   }
 
 }

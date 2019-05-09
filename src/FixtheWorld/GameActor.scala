@@ -12,8 +12,10 @@ class GameActor extends Actor {
   override def receive: Receive = {
     case message: newsprm => wmb.players += (message.username -> new Sperm(loc = new sprmlocation(0, 0)))
     case message: removesprm => wmb.players -= message.username
-    case message: movesprm => wmb.players(message.username).location.sprmrght = this.wmb.players(message.username).location.sprmrght
+    case message: movesprm =>
+      wmb.players(message.username).location.sprmrght = this.wmb.players(message.username).location.sprmrght
       wmb.players(message.username).location.sprmlft = this.wmb.players(message.username).location.sprmlft
-
+    case UpdateGame =>
+      wmb.update()
   }
 }

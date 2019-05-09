@@ -10,6 +10,10 @@ class Womb {
 
   var lastUpdateTime: Long = System.nanoTime()
 
+  def update(): Unit ={
+    val time:Long = System.nanoTime()
+    this.lastUpdateTime = time
+  }
 
 
   def gameState(): String = {

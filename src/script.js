@@ -1,11 +1,12 @@
+var socket = io.connect({transports: ['websocket']})
+socket.on('gameState',move());
 
 var sperm = document.getElementById("sperm");
 var spermLeft = 0;
 var spermTop = 0;
 var proj1 = document.getElementById("projectile1");
 var txt = document.getElementById("text");
-var socket = io.connect({transports: ['websocket']})
-socket.on('gamestate',parseGameState);
+
 
 function move(e) {                                  //gives "You Win!" even if you're not in the exit, you just have
     if (e.keyCode === 39) {                         //to be so far left and so far down to trigger the "You Win" text
